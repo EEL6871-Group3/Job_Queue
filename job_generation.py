@@ -1,12 +1,7 @@
 import random
+import sys
 
-def generate_stress_ng_jobs(num_jobs, file_path):
-    # Define ranges for different parameters
-    io_range = (1, 16)
-    vm_range = (1, 16)
-    vm_bytes_range = (1, 8)  # in GB
-    timeout_range = (1, 60)  # in minutes
-
+def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, num_jobs, file_path):
     # Open the file in append mode
     with open(file_path, 'a') as file:
         for _ in range(num_jobs):
@@ -14,7 +9,7 @@ def generate_stress_ng_jobs(num_jobs, file_path):
             io_count = random.randint(*io_range)
             vm_count = random.randint(*vm_range)
             vm_bytes = f"{random.randint(*vm_bytes_range)}G"
-            timeout = f"{random.randint(*timeout_range)}m"
+            timeout = f"{random.randint(*timeout_range)}s"
 
             # Format the stress-ng command
             command = f"stress-ng --io {io_count} --vm {vm_count} --vm-bytes {vm_bytes} --timeout {timeout}"
@@ -23,8 +18,23 @@ def generate_stress_ng_jobs(num_jobs, file_path):
 
     return f"Generated {num_jobs} stress-ng jobs and appended to {file_path}"
 
-# Example usage
-output_file_path = "job_list.txt"  # Replace with your file path
-num_of_jobs = 10  # number of jobs to generate
+if __name__ == "__main__":
+    # Read arguments from the command line
+    try:
+        io_range = (int(sys.argv[1]), int(sys.argv[2]))
+        vm_range = (int(sys.argv[3]), int(sys.argv[4]))
+        vm_bytes_range = (int(sys.argv[5]), int(sys.argv[6]))  # in GB
+        timeout_range = (int(sys.argv[7]), int(sys.argv[8]))  # in minutes
+        num_of_jobs = int(sys.argv[9])
+    except IndexError:
+        print("Error: Not enough arguments provided.")
+        sys.exit(1)
+    except ValueError:
+        print("Error: Invalid argument type. Please provide integer values.")
+        sys.exit(1)
 
-generate_stress_ng_jobs(num_of_jobs, output_file_path)
+    # Set a default output file path
+    output_file_path = "job_list.txt"
+
+    result = generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, num_of_jobs, output_file_path)
+    print(result)
