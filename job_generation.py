@@ -4,7 +4,7 @@ import sys
 def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, num_jobs, file_path):
     # Open the file in append mode
     with open(file_path, 'a') as file:
-        for _ in range(num_jobs):
+        while num_jobs != 0:
             # Randomly select values from the ranges
             io_count = random.randint(*io_range)
             vm_count = random.randint(*vm_range)
@@ -12,14 +12,28 @@ def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, n
             timeout = f"{random.randint(*timeout_range)}s"
 
             # Format the stress-ng command
-            command = f"stress-ng --io {io_count} --vm {vm_count} --vm-bytes {vm_bytes} --timeout {timeout}"
+            command = "stress-ng"
+            if io_count != 0:
+                command += f" --io {io_count}"
+            if vm_count != 0:
+                command += f"--vm {vm_count}"
+            if vm_bytes != "0G":
+                command += f"--vm-bytes {vm_bytes}"
+            if timeout != "0s":
+                command += f" --timeout {timeout}"
+            if command == "stress-ng":
+                # ignore empty commands
+                continue
+            
             # Append the command to the file
             file.write(command + "\n")
+            num_jobs -= 1
 
     return f"Generated {num_jobs} stress-ng jobs and appended to {file_path}"
 
 if __name__ == "__main__":
     # Read arguments from the command line
+    # python3 Job_Queue/job_generation.py 0 5 0 5 0 4 10 30 30
     try:
         io_range = (int(sys.argv[1]), int(sys.argv[2]))
         vm_range = (int(sys.argv[3]), int(sys.argv[4]))
