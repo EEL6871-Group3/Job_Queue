@@ -15,10 +15,10 @@ def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, n
             command = "stress-ng"
             if io_count != 0:
                 command += f" --io {io_count}"
-            if vm_count != 0:
-                command += f" --vm {vm_count}"
-            if vm_bytes != "0G":
-                command += f" --vm-bytes {vm_bytes}"
+            if vm_count != 0 and vm_bytes != "0G":
+                command += f" --vm {vm_count} --vm-bytes {vm_bytes}"
+            elif vm_count != 0 or vm_bytes != "0G":
+                continue  # Skip this job if only one of vm or vm_bytes is set
             if timeout != "0s":
                 command += f" --timeout {timeout}"
             if command == "stress-ng":
