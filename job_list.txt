@@ -1,12 +1,30 @@
-stress-ng --io 8 --vm 10 --vm-bytes 15G --timeout 8m
-stress-ng --io 3 --vm 14 --vm-bytes 13G --timeout 8m
-stress-ng --io 3 --vm 1 --vm-bytes 12G --timeout 4m
-stress-ng --io 11 --vm 6 --vm-bytes 14G --timeout 4m
-stress-ng --io 8 --vm 16 --vm-bytes 5G --timeout 3m
-stress-ng --io 5 --vm 9 --vm-bytes 12G --timeout 6m
-stress-ng --io 10 --vm 13 --vm-bytes 2G --timeout 5m
-stress-ng --io 10 --vm 13 --vm-bytes 1G --timeout 2m
-stress-ng --io 12 --vm 14 --vm-bytes 7G --timeout 1m
-stress-ng --io 10 --vm 15 --vm-bytes 10G --timeout 5m
-stress-ng --io 4 --vm 11 --vm-bytes 16G --timeout 3m
-stress-ng --io 5 --vm 10 --vm-bytes 3G --timeout 8m
+stress-ng --io 1 --vm 2 --vm-bytes 4G --timeout 13s
+stress-ng --io 1 --vm 3 --vm-bytes 2G --timeout 29s
+stress-ng --io 1 --vm 3 --vm-bytes 3G --timeout 17s
+stress-ng --io 5 --vm 3 --vm-bytes 3G --timeout 28s
+stress-ng --io 4 --vm 2 --vm-bytes 2G --timeout 16s
+stress-ng --vm 5 --vm-bytes 3G --timeout 14s
+stress-ng --io 5 --vm 2 --vm-bytes 4G --timeout 26s
+stress-ng --io 1 --vm 3 --vm-bytes 2G --timeout 25s
+stress-ng --io 1 --vm 5 --vm-bytes 1G --timeout 10s
+stress-ng --io 5 --vm 3 --vm-bytes 2G --timeout 26s
+stress-ng --vm 4 --vm-bytes 2G --timeout 27s
+stress-ng --io 2 --timeout 28s
+stress-ng --vm 1 --vm-bytes 2G --timeout 13s
+stress-ng --io 4 --vm 4 --vm-bytes 4G --timeout 24s
+stress-ng --io 2 --vm 1 --vm-bytes 1G --timeout 16s
+stress-ng --io 3 --vm 4 --vm-bytes 3G --timeout 23s
+stress-ng --io 1 --vm 1 --vm-bytes 2G --timeout 16s
+stress-ng --vm 4 --vm-bytes 1G --timeout 29s
+stress-ng --io 1 --vm 1 --vm-bytes 3G --timeout 18s
+stress-ng --io 4 --vm 4 --vm-bytes 1G --timeout 12s
+stress-ng --io 4 --vm 1 --vm-bytes 1G --timeout 12s
+stress-ng --io 2 --vm 2 --vm-bytes 2G --timeout 23s
+stress-ng --io 5 --vm 1 --vm-bytes 2G --timeout 28s
+stress-ng --io 5 --vm 5 --vm-bytes 1G --timeout 14s
+stress-ng --io 1 --vm 1 --vm-bytes 4G --timeout 20s
+stress-ng --io 5 --vm 5 --vm-bytes 1G --timeout 11s
+stress-ng --vm 1 --vm-bytes 1G --timeout 22s
+stress-ng --vm 3 --vm-bytes 2G --timeout 26s
+stress-ng --io 3 --vm 2 --vm-bytes 1G --timeout 16s
+stress-ng --io 1 --vm 2 --vm-bytes 2G --timeout 22s
