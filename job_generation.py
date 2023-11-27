@@ -19,11 +19,11 @@ def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, n
                 command += f" --vm {vm_count} --vm-bytes {vm_bytes}"
             elif vm_count != 0 or vm_bytes != "0G":
                 continue  # Skip this job if only one of vm or vm_bytes is set
-            if timeout != "0s":
-                command += f" --timeout {timeout}"
             if command == "stress-ng":
                 # ignore empty commands
                 continue
+            if timeout != "0s":
+                command += f" --timeout {timeout}"
             
             # Append the command to the file
             file.write(command + "\n")
