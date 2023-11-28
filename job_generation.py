@@ -3,6 +3,7 @@ import sys
 
 def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, num_jobs, file_path):
     # Open the file in append mode
+    total_num = num_jobs
     with open(file_path, 'a') as file:
         while num_jobs != 0:
             # Randomly select values from the ranges
@@ -29,7 +30,7 @@ def generate_stress_ng_jobs(io_range, vm_range, vm_bytes_range, timeout_range, n
             file.write(command + "\n")
             num_jobs -= 1
 
-    return f"Generated {num_jobs} stress-ng jobs and appended to {file_path}"
+    return f"Generated {total_num} stress-ng jobs and appended to {file_path}"
 
 if __name__ == "__main__":
     # Read arguments from the command line
