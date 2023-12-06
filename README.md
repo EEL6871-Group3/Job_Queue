@@ -2,20 +2,20 @@ Cluster Creation:
 
 
 1) Update host entries, disable swap and add kernel parameters. (This will be run on worker and master nodes)
-sudo vi etc/hosts
-192.168.1.190 k8s-master
-192.168.1.191 k8s-worker1
-192.168.1.192 k8s-worker2
+sudo vi /etc/hosts
+128.110.217.71 k8s-master
+128.110.217.114 k8s-worker1
+128.110.217.87 k8s-worker2
 
 3) sudo swapoff -a (This will be run on worker and master nodes)
    sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab (This will be run on worker and master nodes)
 
 4) Below commands will run on master and worker nodes
-sudo vi  /etc/modules-load.d/containerd.conf <<EOF
+sudo vi  /etc/modules-load.d/containerd.conf
 overlay
 br_netfilter
-EOF
-save and close the file 
+
+Now, save and close the file 
 
 6) Below commands will run on master and worker nodes
 sudo modprobe overlay
